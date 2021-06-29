@@ -1,0 +1,1 @@
+SELECT t.grade AS grade, t.s/t.cnt AS avg_score FROM (SELECT i.grade, count(*) AS cnt, sum(i.score) AS s FROM inspections i WHERE i.grade != ' ' AND i.grade IS NOT NULL GROUP BY i.grade) AS t;

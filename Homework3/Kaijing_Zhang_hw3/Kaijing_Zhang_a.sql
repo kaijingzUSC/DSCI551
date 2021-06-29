@@ -1,0 +1,1 @@
+SELECT DISTINCT facility_name FROM violations WHERE facility_name LIKE '%cafe%' AND violation_code = 'F030';

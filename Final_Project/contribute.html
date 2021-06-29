@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+  <head>
+    <title>University Statistics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script> 
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBrw9IRFy7Y-QzK2JVyo8X-TZSl0FXZt8Q",
+        authDomain: "inf551-jyl.firebaseapp.com",
+        databaseURL: "https://inf551-jyl.firebaseio.com",
+        projectId: "inf551-jyl",
+        storageBucket: "inf551-jyl.appspot.com",
+        messagingSenderId: "1043077574300",
+        appId: "1:1043077574300:web:c9ec232ef02f2eeed98759"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
+      <style type="text/css">
+        .jumbotron {
+            height: 200px;
+            margin-top: 50px;
+            margin-bottom: 0 !important;
+            text-align: center;
+        }
+        .input-group-button {
+            padding: 0 0 0 5px;
+            border-color: transparent;
+            background: none;
+          }
+        body {
+           border: 0px 0px 0px 0px;
+           margin: 0px 0px 0px 0px;
+           position:relative;
+           background-color: Gainsboro;
+        }
+        .form {
+            position: relative;
+            margin: 10px 10px 10px 10px;
+        }
+    </style>
+      
+  </head>
+
+  <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><b>University Statistics</b></a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <!-- <li class="active"><a href="visualization.html">Visualization</a></li> -->
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Visualization <span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="visualization">
+                    <li><a href="barplot.html">Bar Plot</a></li>
+                    <li><a href="RadarChart.html">Radar Chart</a></li>
+                    </ul>
+                    </li>
+                    <li class="active"><a href="contribute.html">Contribute Data</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="jumbotron jumbotron-fluid" id="jumbotron">
+            <h1 class="display-3">Thank You</h1>
+            <p class="lead">Please select the university and the attribute you want to modify</p>
+        </div>
+
+        <div class="col-md-4 col-md-offset-4">
+            <br>
+            <br>
+            <form>
+                <div class="form-group">
+                    <label for="State" class="control-label">State</label>
+                    <select id="stateFilter" class="selectpicker form-control" onchange="configureDropDownLists(this,document.getElementById('nameFilter'))">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="School-Name" class="control-label">School Name</label>
+                    <select id="nameFilter" class="form-control" title="Select">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Variable" class="control-label">Variable</label>
+                    <select id="variableFilter" class="selectpicker form-control" title="Select">
+                        <option value="act">Average ACT</option>
+                        <option value="sat">Average SAT</option>
+                        <option value="gpa">Average GPA</option>
+                        <option value="enrollment">Enrollment</option>
+                        <option value="acceptRate">Acceptence Rate</option>
+                        <option value="businessScore">Bussiness School Score</option>
+                        <option value="engineeringScore">Engineering School Score</option>
+                        <option value="tuition">Tuition</option>
+                        <option value="overallRank">Rank</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="input">Value</label>
+                    <input type="text" class="form-control" id="inputValue" placeholder="Must be numerical" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-default" id="submit" data-dismiss="modal">Submit</button>  
+                </div>
+            </form>
+        </div>
+
+        <script src="contribute.js" type="text/javascript"></script> 
+  </body>

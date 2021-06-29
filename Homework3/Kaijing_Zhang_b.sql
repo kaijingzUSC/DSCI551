@@ -1,0 +1,1 @@
+SELECT DISTINCT facility_name FROM inspections WHERE score = (SELECT max(score) FROM inspections) GROUP BY facility_name;

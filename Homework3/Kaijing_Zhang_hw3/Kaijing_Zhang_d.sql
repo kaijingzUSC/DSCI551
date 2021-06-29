@@ -1,0 +1,1 @@
+SELECT DISTINCT i.facility_name FROM inspections i WHERE i.facility_id NOT IN (SELECT v.facility_id FROM violations v) ORDER BY i.facility_name ASC;
